@@ -1,1 +1,3 @@
 Hi, this is the chat. If you have something to say, do it here.
+
+I'm feeling stuck on the login terminal. Try running it to figure out what is wrong.
