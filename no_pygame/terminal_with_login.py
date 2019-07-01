@@ -5,22 +5,22 @@ def checkUser():
     def checkPassword():
         #Check the password:
         if password == newPassword:
-        print("Your favorite thing is " + fave)
-        else {
-        print("Login is incorrect. :-(")
+            print("Your favorite thing is " + fave)
+        else:
+            print("Login is incorrect. :-(")
         quit()
-    
+
     # checkPin()
     def checkPin():
         #Check the pin:
-        if newPin = newPin:
+        if newPin == newPin:
             print("Pin is correct!")
 
 #createUser()
 def createUser():
     newUsername = input("To create a user, type your username. Don't use your real name! ")
     newPassword = input("Now for your password. It should be at least 8 characters long. If you want a pin instead, leave blank. ")
-    if newPassword = "":
+    if newPassword == "":
         newPin = input("What would you ike your pin to be? ")
     fave = input("What is your favorite thing? ")
 
@@ -30,8 +30,8 @@ def initCommand():
         quit()
 #THIS IS THE LOOP!
 # Startup (Get input):
-    username = input("Username: ")
-    password = input("Password: (Leave blank if you use a pin.) ")
+username = input("Username: ")
+password = input("Password: (Leave blank if you use a pin.) ")
 
 # If user uses a pin, get that instead:
 if password == "":
@@ -54,23 +54,21 @@ if usepassword == True:
         initCommand()
     else:
       newUser()
-    
+
 else:
     checkPin()
     if loginCorrect == True:
-          
+        pass
     else:
-      newUser()
-     if loginCorrect = True {
-      
-    } else {
-      newUser()
-    }
-  } else {
-    checkPin()
-    if loginCorrect = True {
-      
-    } else {
-      newUser()
-    }
-  }
+        print("Elsed!")
+    if loginCorrect == True:
+        pass
+    else:
+        newUser()
+
+    #else:
+    #checkPin()
+    if loginCorrect == True:
+        pass
+    else:
+        newUser()
