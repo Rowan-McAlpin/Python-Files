@@ -1,5 +1,3 @@
-Hi, this is the chat. If you have something to say, do it here.
-
 I'm feeling stuck on the login terminal. Try running it to figure out what is wrong.
 
 my OTHER terminal, which you, dad, are the only one who has seen until 7/1/19, is acting up. the error is:
@@ -13,3 +11,63 @@ UnboundLocalError: local variable 'username' referenced before assignment
 
 
 I declare 'username' before I call command().
+
+I guess that you cannot use a global variable in a function(?)
+ I tried this:
+ 
+print("This program is copyright of Mcalpin Programming, Inc.")
+print("The default password is 'pythonterminal'")
+print("Type 'help' for a list of commands.")
+print("")
+
+def command():
+    password = "pythonterminal"
+    username = "default"
+    inputCommand = input(username + "@pythonterminal:~ $ ")
+    if inputCommand == "exit":
+        quit()
+
+    elif inputCommand == "print-data":
+        print(" Your name is " + username + ".")
+
+    elif inputCommand == "help":
+        print(" The commands you can use are:")
+        print("     exit - quit the terminal")
+        print("     help - opens the help page")
+        print("     print-data - View your data")
+        print("     change-user - Change the username")
+        print("     change-password - Change the password")
+
+    elif inputCommand == "":
+        command()
+
+    elif inputCommand == "change-user":
+        print("This command requres superuser privileges.")
+        inputPassword = input("What is your password? ")
+        if inputPassword == password:
+            check = True
+        else:
+            check = False
+        if check == True:
+            username = input("What would you like the username to be? ")
+        else:
+            print("Sorry, the password is incorrect.")
+
+    elif inputCommand == "change-password":
+        print("This command requres superuser privileges.")
+        inputPassword = input("What is your password? ")
+        if inputPassword == password:
+            check = True
+        else:
+            check = False
+        if check == True:
+            password = input("What would you like the password to be? ")
+        else:
+            print("Sorry, the password is incorrect.")
+
+    else:
+        print(" Bash: " + inputCommand + ": command not found.")
+while True:
+    command()
+
+But it re-defines "username" and "password" every time the function is called.
