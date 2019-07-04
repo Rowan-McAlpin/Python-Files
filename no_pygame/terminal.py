@@ -2,15 +2,15 @@ print("This program is copyright of Mcalpin Programming, Inc.")
 print("The default password is 'pythonterminal'.")
 print("Type 'help' for a list of commands.")
 print("")
-username = "terminal"
-password = "pythonterminal"
-def command():
-    inputCommand = input(username + "@pythonterminal:~ $ ")
+
+
+def command(data):
+    inputCommand = input(data['username'] + "@pythonterminal:~ $ ")
     if inputCommand == "exit":
         quit()
         
     elif inputCommand == "print-data":
-        print(" Your name is " + username + ".")
+        print(" Your name is " + data['username'] + ".")
         
     elif inputCommand == "help":
         print(" The commands you can use are:")
@@ -21,37 +21,48 @@ def command():
         print("     change-password - Change the password")
 
     elif inputCommand == "":
-        command()
+        return False
         
     elif inputCommand == "change-user":
-        print("This command requres superuser privileges.")
+        print("This command requires superuser privileges.")
         inputPassword = input("What is your password? ")
-        if inputPassword == password:
+        if inputPassword == data['password']:
             check = True
         else:
             check = False
         if check == True:
-            username = input("What would you like the username to be? ")
+            result = data
+            result['username'] = input("What would you like the username to be? ")
             origUser = False
+            return result
         else:
             print("Sorry, the password is incorrect.")
 
     elif inputCommand == "change-password":
         print("This command requres superuser privileges.")
         inputPassword = input("What is your password? ")
-        if inputPassword == password:
+        if inputPassword == data['password']:
             check = True
         else:
             check = False
         if check == True:
-            password = input("What would you like the password to be? ")
+            result = data
+            result['password'] = input("What would you like the password to be? ")
             origPassword = False
+            return result
         else:
             print("Sorry, the password is incorrect.")
 
     else:
         print(" Bash: " + inputCommand + ": command not found.")
-username = "terminal"
-password = "pythonterminal"
+    return False
+
+
+data = {
+    'username': 'terminal',
+    'password': 'pythonterminal'
+}
 while True:
-    command()
+    changes = command(data)
+    if changes:
+        data = changes
