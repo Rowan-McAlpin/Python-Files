@@ -24,6 +24,12 @@ def command(data):
         return False
         
     elif inputCommand == "change-user":
+        print("Needs to be sudo. Try sudo change-user.")
+    
+    elif inputCommand == "change-password":
+        print("Needs to be sudo. Try sudo change-password.")
+    
+    elif inputCommand == "sudo change-user":
         print("This command requires superuser privileges.")
         inputPassword = input("What is your password? ")
         if inputPassword == data['password']:
@@ -38,7 +44,7 @@ def command(data):
         else:
             print("Sorry, the password is incorrect.")
 
-    elif inputCommand == "change-password":
+    elif inputCommand == "sudo change-password":
         print("This command requres superuser privileges.")
         inputPassword = input("What is your password? ")
         if inputPassword == data['password']:
