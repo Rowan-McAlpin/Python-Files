@@ -1,4 +1,4 @@
-print("This program is copyright of Mcalpin Programming, Inc.")
+print("This program is copyright of Equinox Programming, Inc.")
 print("The default password is 'pythonterminal'.")
 print("Type 'help' for a list of commands.")
 print("")
