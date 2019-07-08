@@ -1,74 +1,90 @@
 # Define the functions used in the program ('createUser()', 'checkPassword()', and 'checkPin()'):
 # checkPassword()
+print("This program is copyright of Mcalpin Programming, Inc.")
+print("The default password is 'pythonterminal'.")
+print("Type 'help' for a list of commands.")
+print("")
 
-def checkUser():
-    def checkPassword():
-        #Check the password:
-        if password == newPassword:
-            print("Your favorite thing is " + fave)
+
+def login():
+    uName = input('Username: ')
+    if data['username'] == uName:
+        pWord = input('Password: ')
+        if data['password'] == pWord:
+            global loginCorrect
+            loginCorrect = True
         else:
-            print("Login is incorrect. :-(")
+            print('Password incorrect. Please try again.')
+            break
+    else:
+        print('Username incorrect. Please try again.')
+        break
+
+def command(data):
+    inputCommand = input(data['username'] + "@pythonterminal:~ $ ")
+    if inputCommand == "exit":
         quit()
+        
+    elif inputCommand == "print-data":
+        print(" Your name is " + data['username'] + ".")
+        
+    elif inputCommand == "help":
+        print(" The commands you can use are:")
+        print("     exit - quit the terminal - This doesn't work in MU 1.0.2.")
+        print("     help - opens the help page")
+        print("     print-data - View your data")
+        print("     change-user - Change the username")
+        print("     change-password - Change the password")
 
-    # checkPin()
-    def checkPin():
-        #Check the pin:
-        if newPin == newPin:
-            print("Pin is correct!")
+    elif inputCommand == "":
+        return False
+        
+    elif inputCommand == "change-user":
+        print("Needs to be sudo. Try sudo change-user.")
+    
+    elif inputCommand == "change-password":
+        print("Needs to be sudo. Try sudo change-password.")
+    
+    elif inputCommand == "sudo change-user":
+        print("This command requires superuser privileges.")
+        inputPassword = input("What is your password? ")
+        if inputPassword == data['password']:
+            check = True
+        else:
+            check = False
+        if check == True:
+            result = data
+            result['username'] = input("What would you like the username to be? ")
+            origUser = False
+            return result
+        else:
+            print("Sorry, the password is incorrect.")
 
-#createUser()
-def createUser():
-    newUsername = input("To create a user, type your username. Don't use your real name! ")
-    newPassword = input("Now for your password. It should be at least 8 characters long. If you want a pin instead, leave blank. ")
-    if newPassword == "":
-        newPin = input("What would you ike your pin to be? ")
-    fave = input("What is your favorite thing? ")
+    elif inputCommand == "sudo change-password":
+        print("This command requres superuser privileges.")
+        inputPassword = input("What is your password? ")
+        if inputPassword == data['password']:
+            check = True
+        else:
+            check = False
+        if check == True:
+            result = data
+            result['password'] = input("What would you like the password to be? ")
+            origPassword = False
+            return result
+        else:
+            print("Sorry, the password is incorrect.")
 
-def initCommand():
-    currCommand = input(username + "@pythonTerminal: ~ $")
-    if currCommand == "quit":
-        quit()
-#THIS IS THE LOOP!
-# Startup (Get input):
-username = input("Username: ")
-password = input("Password: (Leave blank if you use a pin.) ")
-
-# If user uses a pin, get that instead:
-if password == "":
-    pin = input("What is your pin, then? ")
-elif password == " ":
-    pin = input("What is your pin, then? ")
-
-if password != "":
-    usePassword = True
-elif password != " ":
-    usePassword = True
-else:
-    usepassword = False
-
-# Check the password / pin:
-
-if usepassword == True:
-    checkPassword()
-    if loginCorrect == True:
-        initCommand()
     else:
-      newUser()
+        print(" Bash: " + inputCommand + ": command not found.")
+    return False
 
-else:
-    checkPin()
-    if loginCorrect == True:
-        pass
-    else:
-        print("Elsed!")
-    if loginCorrect == True:
-        pass
-    else:
-        newUser()
 
-    #else:
-    #checkPin()
-    if loginCorrect == True:
-        pass
-    else:
-        newUser()
+data = {
+    'username': 'terminal',
+    'password': 'pythonterminal'
+}
+while True:
+    changes = command(data)
+    if changes:
+        data = changes
