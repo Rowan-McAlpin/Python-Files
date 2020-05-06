@@ -1,4 +1,4 @@
-print("This program is copyright of Equinox Programming, Inc.")
+print("This program is copyright of Platinum Programming, Inc.")
 print("The default password is 'pythonterminal'.")
 print("Type 'help' for a list of commands.")
 print("")
@@ -8,10 +8,10 @@ def command(data):
     inputCommand = input(data['username'] + "@pythonterminal:~ $ ")
     if inputCommand == "exit":
         quit()
-        
+
     elif inputCommand == "print-data":
         print(" Your name is " + data['username'] + ".")
-        
+
     elif inputCommand == "help":
         print(" The commands you can use are:")
         print("     exit - quit the terminal - This doesn't work in MU 1.0.2.")
@@ -22,13 +22,13 @@ def command(data):
 
     elif inputCommand == "":
         return False
-        
+
     elif inputCommand == "change-user":
         print("Needs to be sudo. Try sudo change-user.")
-    
+
     elif inputCommand == "change-password":
         print("Needs to be sudo. Try sudo change-password.")
-    
+
     elif inputCommand == "sudo change-user":
         print("This command requires superuser privileges.")
         inputPassword = input("What is your password? ")
